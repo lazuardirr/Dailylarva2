@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class CreateAgentRequest extends Request
+class AgentRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,8 @@ class CreateAgentRequest extends Request
     {
         return [
             'email' => 'required|email',
-            'email_password' => 'required|min:8',
-            'dailymotion_password' => 'required|min:8'
+            'email_password' => 'required',
+            'dailymotion_password' => 'required'
         ];
     }
 }
