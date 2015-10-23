@@ -20,7 +20,7 @@
                         </div>
                         <div class="portlet-body form">
                             {!! Form::open(['url' => 'agents']) !!}
-                                @include('pages.agents.form', ['submitButtonText' => 'Add Agent'])
+                            @include('pages.partials.form', ['pages'=> 'agents', 'submitButtonText' => 'Add Agent'])
                             {!! Form::close() !!}
 
                             @include('errors.list')
