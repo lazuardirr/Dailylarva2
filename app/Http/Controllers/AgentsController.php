@@ -28,12 +28,12 @@ class AgentsController extends Controller
     /**
      * Show a single agents
      *
-     * @param integer $id
+     * @param Agent $agent
      * @return Response
      */
-    public function show($id)
+    public function show(Agent $agent)
     {
-        $agent = Agent::findOrFail($id);
+
         return view('pages.agents.show', compact('agent'));
     }
 
@@ -44,7 +44,7 @@ class AgentsController extends Controller
      */
     public function create()
     {
-        return view('pages.agents.new');
+        return view('pages.agents.create');
     }
 
     /**
@@ -55,32 +55,34 @@ class AgentsController extends Controller
      */
     public function store(AgentRequest $request)
     {
-        Agent::create($request->all());
+        $agent = new Agent($request->all());
+        $agent->save();
+
+        flash('New Agent have been created.');
+
         return redirect('agents');
     }
 
     /**
      * Show the form page to edit existing agent.
      *
-     * @param $id
+     * @param Agent $agent
      * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Agent $agent)
     {
-        $agent = Agent::findOrFail($id);
         return view('pages.agents.edit', compact('agent'));
     }
 
     /**
      * Update existing agent.
      *
-     * @param $id
+     * @param Agent $agent
      * @param AgentRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update($id, AgentRequest $request)
+    public function update(Agent $agent, AgentRequest $request)
     {
-        $agent = Agent::findOrFail($id);
         $agent->update($request->all());
         return redirect('agents');
     }
