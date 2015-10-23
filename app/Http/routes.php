@@ -11,8 +11,4 @@
 |
 */
 
-Route::get('/', 'TestDebug@index');
-Route::get('agents', 'AgentsController@index');
-Route::get('agents/new', 'AgentsController@create');
-Route::post('agents', 'AgentsController@store');
-Route::get('agents/{id}', 'AgentsController@show');
+Route::resource('agents', 'AgentsController');
