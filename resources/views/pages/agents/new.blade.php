@@ -20,39 +20,11 @@
                         </div>
                         <div class="portlet-body form">
                             {!! Form::open(['url' => 'agents']) !!}
-                            <div class="form-body">
-                                <div class="form-group">
-                                    {!! Form::label('email', 'Email:') !!}
-                                    <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-envelope"></i>
-                                            </span>
-                                        {!! Form::text('email', null, ['class' => 'form-control']) !!}
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    {!! Form::label('email_password', 'Email Password:') !!}
-                                    <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                        {!! Form::text('email_password', null, ['class' => 'form-control']) !!}
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    {!! Form::label('dailymotion_password', 'Dailymotion Password:') !!}
-                                    <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                        {!! Form::text('dailymotion_password', null, ['class' => 'form-control']) !!}
-                                    </div>
-                                </div>
-                                <div class="form-actions">
-                                    {!! Form::submit('Submit', ['class' => 'btn btn-primary form-control']) !!}
-                                </div>
-                            </div>
+                                @include('pages.agents.form', ['submitButtonText' => 'Add Agent'])
                             {!! Form::close() !!}
+
+                            @include('errors.list')
+
                         </div>
                     </div>
                 </div>
