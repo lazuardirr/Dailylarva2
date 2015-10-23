@@ -12,3 +12,4 @@
 */
 
 Route::resource('agents', 'AgentsController');
+Route::resource('movies', 'MoviesController');
