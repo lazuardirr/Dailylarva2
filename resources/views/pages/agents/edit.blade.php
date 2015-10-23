@@ -20,7 +20,7 @@
                         </div>
                         <div class="portlet-body form">
                             {!! Form::model($agent, ['method' => 'PATCH', 'action' => ['AgentsController@update', $agent->id]]) !!}
-                            @include('pages.agents.form', ['submitButtonText' => 'Edit Agent'])
+                            @include('pages.partials.form', ['submitButtonText' => 'Edit Agent'])
                             {!! Form::close() !!}
 
                             @include('errors.list')
