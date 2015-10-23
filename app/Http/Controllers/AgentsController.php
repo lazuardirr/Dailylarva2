@@ -4,8 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Agent;
 use App\Http\Requests;
-use Illuminate\Http\Request;
+use App\Http\Requests\AgentRequest;
 
+/**
+ * Class AgentsController
+ * Handle control function of agent
+ *
+ * @package App\Http\Controllers
+ */
 class AgentsController extends Controller
 {
     /**
@@ -44,12 +50,38 @@ class AgentsController extends Controller
     /**
      * Save a new Agent.
      *
-     * @param Request $request
+     * @param AgentRequest $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(AgentRequest $request)
     {
         Agent::create($request->all());
+        return redirect('agents');
+    }
+
+    /**
+     * Show the form page to edit existing agent.
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $agent = Agent::findOrFail($id);
+        return view('pages.agents.edit', compact('agent'));
+    }
+
+    /**
+     * Update existing agent.
+     *
+     * @param $id
+     * @param AgentRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update($id, AgentRequest $request)
+    {
+        $agent = Agent::findOrFail($id);
+        $agent->update($request->all());
         return redirect('agents');
     }
 }
