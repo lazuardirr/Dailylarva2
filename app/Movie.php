@@ -4,6 +4,7 @@ namespace App;
 
 use App\lib\ContentGenerator;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 class Movie extends Model
 {
@@ -17,15 +18,13 @@ class Movie extends Model
         'language',
     ];
 
-    public function setDescription()
+    public function setDescription(ContentGenerator $content)
     {
-        $data = new ContentGenerator($this->id);
-        $this->description = $data->getDescription();
+        $this->description = Crypt::encrypt($content->getDescription());
     }
 
-    public function setThumbnail()
+    public function setThumbnail(ContentGenerator $content)
     {
-        $data = new ContentGenerator($this->id);
-        $this->thumbnail = $data->getThumbnail();
+        $this->thumbnail = $content->getThumbnail();
     }
 }
