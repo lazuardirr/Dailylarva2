@@ -1,7 +1,7 @@
 @extends('dashboard')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <!-- BEGIN PAGE HEADER-->
         <h3 class="page-title">
             View Agent Database
@@ -10,7 +10,7 @@
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet box grey-cascade">
                     <div class="portlet-title">
