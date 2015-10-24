@@ -1,13 +1,13 @@
 @extends('dashboard')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <!-- BEGIN PAGE HEADER-->
         <h3 class="page-title">Movies</h3>
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet box grey-cascade">
                     <div class="portlet-title">
@@ -69,11 +69,11 @@
                                 </tr>
                                 <tr>
                                     <th class="col-md-2">Thumbnail</th>
-                                    <td class="col-md-10">{!!  Html::image($movie->thumbnail, null, ['class' => 'col-md-12']) !!}</td>
+                                    <td class="col-md-10">{!!  Html::image($movie->thumbnail, null, ['class' => 'img-thumbnail col-md-6']) !!}</td>
                                 </tr>
                                 <tr>
                                     <th class="col-md-2">Description</th>
-                                    <td class="col-md-10">{{ $movie->description }}</td>
+                                    <td class="col-md-10">{!! \Illuminate\Support\Facades\Crypt::decrypt($movie->description) !!}</td>
                                 </tr>
                             </table>
                             <br/>
