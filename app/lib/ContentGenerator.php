@@ -8,18 +8,6 @@ class ContentGenerator
     protected $data;
     protected $codes = array();
 
-
-    /**
-     * Getter method for $this->data
-     *
-     * @return mixed
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-
     /**
      * Constructor
      *
@@ -37,6 +25,16 @@ class ContentGenerator
             'movie_overview' => $this->getData()->overview,
             'short_url' => $this->tinyurl_short_url($this->landing_page)
         );
+    }
+
+    /**
+     * Getter method for $this->data
+     *
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
     }
 
     /**
@@ -75,7 +73,7 @@ class ContentGenerator
     public function getDescription()
     {
         if ($this->isDataExists()) {
-            dd(view('lib.ContentGenerator.content_template', $this->codes)->render());
+            return view('lib.ContentGenerator.content_template', $this->codes)->render();
         } else {
             return false;
         }
