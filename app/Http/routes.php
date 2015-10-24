@@ -12,4 +12,5 @@
 */
 
 Route::resource('agents', 'AgentsController');
+Route::get('movies/json/{title}', 'MoviesController@getMovie');
 Route::resource('movies', 'MoviesController');
