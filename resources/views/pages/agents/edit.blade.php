@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('adminlte')
 
 @section('content')
     <div class="page-content-wrapper">
@@ -11,7 +11,7 @@
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="portlet-body form">
                             {!! Form::model($agent, ['method' => 'PATCH', 'action' => ['AgentsController@update', $agent->id]]) !!}
-                            @include('pages.partials.form', ['submitButtonText' => 'Edit Agent'])
+                            @include('pages.partials.form', ['pages' => 'agents', 'submitButtonText' => 'Edit Agent'])
                             {!! Form::close() !!}
 
                             @include('errors.list')

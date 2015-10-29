@@ -11,6 +11,16 @@
 |
 */
 
+Route::get('/', function(){
+    return view('adminlte');
+});
 Route::resource('agents', 'AgentsController');
 Route::get('movies/json/{title}', 'MoviesController@getMovie');
 Route::resource('movies', 'MoviesController');
+Route::resource('server', 'ServerController');
+Route::get('broadcast', function(){
+    return view('pages.broadcastiot');
+});
+Route::get('broadcast/sources', function(){
+    return htmlspecialchars(view('pages.broadcastiot')->render());
+});

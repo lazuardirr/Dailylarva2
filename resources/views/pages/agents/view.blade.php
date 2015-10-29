@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('adminlte')
 
 @section('content')
     <div class="container-fluid">

@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('adminlte')
 
 @section('content')
     <div class="page-content-wrapper">
