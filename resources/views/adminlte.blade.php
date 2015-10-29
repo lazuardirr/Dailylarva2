@@ -69,18 +69,19 @@ desired effect
                 {{ $uri or "Page Title" }}
                 <small>{{ $page_description or null }}</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
+            @if (count(Route::getCurrentRoute()->parameters()) > 0)
+                {!! Breadcrumbs::render(Route::getCurrentRoute()->getName(), Route::getCurrentRoute()->getParameter(Route::getCurrentRoute()->parameterNames()[0])) !!}
+            @else
+                {!! Breadcrumbs::render(Route::getCurrentRoute()->getName()) !!}
+            @endif
+
+
         </section>
 
         <!-- Main content -->
         <section class="content">
-
             <!-- Your Page Content Here -->
             @yield('content')
-
         </section>
         <!-- /.content -->
     </div>

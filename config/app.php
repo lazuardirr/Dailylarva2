@@ -147,6 +147,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\AdminLTEServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
 
     ],
 
@@ -199,6 +200,7 @@ return [
         'Form' => Illuminate\Html\FormFacade::class,
         'Html' => Illuminate\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
     ],
 
