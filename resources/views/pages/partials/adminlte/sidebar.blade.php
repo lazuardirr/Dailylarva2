@@ -29,12 +29,24 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
+            <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="{{url('server')}}"><span>Server</span></a></li>
-            <li><a href="{{url('agents')}}"><span>Agents</span></a></li>
             <li class="treeview active">
-                <a href="{{url('movies')}}"><span>Movie</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="{{url('#')}}"><span>Movie</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{url('server')}}">All Movies</a></li>
+                    <li><a href="{{url('server')}}">Create New Movie</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="{{url('#')}}"><span>Agents</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{url('agents')}}">All Agents</a></li>
+                    <li><a href="{{url('agents/create')}}">Create New Agent</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="{{url('#')}}"><span>Movies</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{url('movies')}}">All Movies</a></li>
                     <li><a href="{{url('movies/create')}}">Create New Movie</a></li>
