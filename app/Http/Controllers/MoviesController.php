@@ -49,6 +49,20 @@ class MoviesController extends Controller
         return redirect('movies');
     }
 
+
+    /**
+     * Show movie edition page.
+     *
+     * @param Movie $movie
+     * @return \Illuminate\View\View
+     */
+    public function edit(Movie $movie)
+    {
+        $page_title = $movie->title;
+        $page_description = 'Edit selected movie.';
+        return view('pages.movies.edit', compact('movie', 'page_title', 'page_description'));
+    }
+
     /**
      * Handle AJAX request of movie id search tools.
      *
