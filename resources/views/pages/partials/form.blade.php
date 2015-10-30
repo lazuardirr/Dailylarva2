@@ -4,27 +4,24 @@
         <div class="input-group">
             <span class="input-group-addon">
                 <i class="fa fa-envelope"></i>
-                {!! Form::label('email', 'Email:') !!}
             </span>
-            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+            {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email Address']) !!}
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon">
                 <i class="fa fa-user"></i>
-                {!! Form::label('email_password', 'Email Password:') !!}
             </span>
-            {!! Form::text('email_password', null, ['class' => 'form-control']) !!}
+            {!! Form::text('email_password', null, ['class' => 'form-control', 'placeholder' => 'Email Password']) !!}
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon">
-                <i class="fa fa-user"></i>
-                {!! Form::label('dailymotion_password', 'Dailymotion Password:') !!}
+                <i class="fa fa-lock"></i>
             </span>
-            {!! Form::text('dailymotion_password', null, ['class' => 'form-control']) !!}
+            {!! Form::text('dailymotion_password', null, ['class' => 'form-control', 'placeholder' => 'Dailymotion Password']) !!}
         </div>
     </div>
     <div class="form-actions">
@@ -37,64 +34,57 @@
         <div class="form-group">
             <div class="input-group">
             <span class="input-group-addon">
-                <i class="fa fa-envelope"></i>
-                {!! Form::label('id', 'ID:') !!}
+                @
             </span>
-                {!! Form::text('id', null, ['class' => 'form-control']) !!}
+                {!! Form::text('id', null, ['class' => 'form-control', isset($movie) ? 'disabled' : '', 'placeholder' => 'ID']) !!}
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
             <span class="input-group-addon">
-                <i class="fa fa-user"></i>
-                {!! Form::label('title', 'Title:') !!}
+                <i class="fa fa-font"></i>
             </span>
-                {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
             <span class="input-group-addon">
-                <i class="fa fa-user"></i>
-                {!! Form::label('Tags', 'Tags:') !!}
+                <i class="fa fa-tag"></i>
             </span>
-                {!! Form::text('tags', null, ['class' => 'form-control']) !!}
+                {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder' => 'Tags']) !!}
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
             <span class="input-group-addon">
-                <i class="fa fa-user"></i>
-                {!! Form::label('genre', 'Genre:') !!}
+                <i class="fa fa-tags"></i>
             </span>
-                {!! Form::text('genre', null, ['class' => 'form-control']) !!}
+                {!! Form::text('genre', null, ['class' => 'form-control', 'placeholder' => 'Genre']) !!}
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
             <span class="input-group-addon">
-                <i class="fa fa-user"></i>
-                {!! Form::label('channel', 'Channel:') !!}
+                <i class="fa fa-music"></i>
             </span>
-                {!! Form::text('channel', null, ['class' => 'form-control']) !!}
+                {!! Form::text('channel', null, ['class' => 'form-control', 'placeholder' => 'Channel']) !!}
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
             <span class="input-group-addon">
-                <i class="fa fa-user"></i>
-                {!! Form::label('country', 'Country:') !!}
+                <i class="fa fa-flag"></i>
             </span>
-                {!! Form::text('country', null, ['class' => 'form-control']) !!}
+                {!! Form::text('country', null, ['class' => 'form-control', 'placeholder' => 'Country']) !!}
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
             <span class="input-group-addon">
-                <i class="fa fa-user"></i>
-                {!! Form::label('language', 'Language:') !!}
+                <i class="fa fa-language"></i>
             </span>
-                {!! Form::text('language', null, ['class' => 'form-control']) !!}
+                {!! Form::text('language', null, ['class' => 'form-control', 'placeholder' => 'Language']) !!}
             </div>
         </div>
         <div class="form-actions">

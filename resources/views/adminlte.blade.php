@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dailylarva {{ $page_title or null }}</title>
+    <title>Dailylarva - @yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -31,26 +31,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 <body class="hold-transition skin-red sidebar-mini">
 <div class="wrapper">
 
@@ -66,8 +46,7 @@ desired effect
                 <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                {{ $uri or "Page Title" }}
-                <small>{{ $page_description or null }}</small>
+                @yield('title')
             </h1>
             @if (count(Route::getCurrentRoute()->parameters()) > 0)
                 {!! Breadcrumbs::render(Route::getCurrentRoute()->getName(), Route::getCurrentRoute()->getParameter(Route::getCurrentRoute()->parameterNames()[0])) !!}
@@ -103,6 +82,8 @@ desired effect
 
 <!-- jQuery 2.1.4 -->
 <script src="{{ asset('assets/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+<!--jQuery UI 1.11.4-->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->

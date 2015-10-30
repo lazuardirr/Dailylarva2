@@ -16,7 +16,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movies = Movie::oldest()->get();//all();
+        $movies = Movie::oldest()->paginate(10);
         return view('pages.movies.view', compact('movies'));
     }
 
@@ -43,10 +43,13 @@ class MoviesController extends Controller
         $movie->setThumbnail($content);
         $movie->setDescription($content);
         $movie->save();
-
-        flash('New Agent have been created.');
-
+        flash('New Movie have been created.');
         return redirect('movies');
+    }
+
+    public function show(Movie $movie)
+    {
+        return view('pages.movies.show', compact('movie'));
     }
 
 
@@ -61,6 +64,13 @@ class MoviesController extends Controller
         $page_title = $movie->title;
         $page_description = 'Edit selected movie.';
         return view('pages.movies.edit', compact('movie', 'page_title', 'page_description'));
+    }
+
+    public function update(MovieRequest $request, Movie $movie)
+    {
+        $movie->update($request->all());
+        flash('Movie have been updated.');
+        return redirect('movies/' . $movie->id);
     }
 
     /**

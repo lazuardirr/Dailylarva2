@@ -21,7 +21,7 @@ class AgentsController extends Controller
      */
     public function index()
     {
-        $agents = Agent::oldest('created_at')->get();
+        $agents = Agent::oldest('created_at')->paginate(10);
         return view('pages.agents.view', compact('agents'));
     }
 
@@ -33,7 +33,6 @@ class AgentsController extends Controller
      */
     public function show(Agent $agent)
     {
-
         return view('pages.agents.show', compact('agent'));
     }
 
@@ -57,9 +56,7 @@ class AgentsController extends Controller
     {
         $agent = new Agent($request->all());
         $agent->save();
-
         flash('New Agent have been created.');
-
         return redirect('agents');
     }
 
@@ -84,6 +81,7 @@ class AgentsController extends Controller
     public function update(Agent $agent, AgentRequest $request)
     {
         $agent->update($request->all());
-        return redirect('agents');
+        flash('Agent have been updated.');
+        return redirect('agents/' . $agent->id);
     }
 }

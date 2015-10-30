@@ -1,5 +1,5 @@
 @extends('adminlte')
 
 @section('content')
-    {{ $uri }}
+    asdf
 @stop

@@ -2,7 +2,10 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo"><b>Admin</b>LTE</a>
+    <a href="{{ route('home') }}" class="logo">
+        <span class="glyphicon glyphicon-eye-close" style="margin-right:-0px;"></span>
+        <b>Daily</b>larva
+    </a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

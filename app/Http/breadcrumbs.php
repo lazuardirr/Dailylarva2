@@ -46,5 +46,25 @@ Breadcrumbs::register('movies.edit', function ($breadcrumbs, $movie) {
     $breadcrumbs->push('Edit', route('movies.edit'));
 });
 
+// Breadcrumbs for server
+Breadcrumbs::register('server.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Server', route('server.index'));
+});
+
+Breadcrumbs::register('server.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('server.index');
+    $breadcrumbs->push('Create', route('server.create'));
+});
+
+Breadcrumbs::register('server.show', function ($breadcrumbs, $server) {
+    $breadcrumbs->parent('server.index');
+    $breadcrumbs->push($server->title, route('server.show', $server->id));
+});
+
+Breadcrumbs::register('server.edit', function ($breadcrumbs, $server) {
+    $breadcrumbs->parent('server.show', $server);
+    $breadcrumbs->push('Edit', route('server.edit'));
+});
 
 

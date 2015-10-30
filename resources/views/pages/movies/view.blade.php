@@ -1,89 +1,64 @@
 @extends('adminlte')
 
+@section('title')
+    Movies
+@endsection
+
 @section('content')
-    <div class="container-fluid">
-        <!-- BEGIN PAGE HEADER-->
-        <h3 class="page-title">Movies</h3>
-        <!-- END PAGE HEADER-->
-        <!-- BEGIN PAGE CONTENT-->
-        <div class="row">
-            <div class="col-md-12">
-                <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box grey-cascade">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-globe"></i>Movies
+    <div class="box box-primary">
+        <div class="box-body">
+            @foreach($movies as $movie)
+                <div class="col-md-6">
+                    <div class="box box-solid">
+                        <div class="box-header with-border ui-sortable-handle">
+                            <div class="user-block">
+                                {!!  Html::image($movie->thumbnail, null, ['class' => 'img-circle']) !!}
+                                <span class="username"><a href="{{ url('movies/'.$movie->id) }}">{{ $movie->title }}</a></span>
+                                <span class="description">{{ $movie->id }}</span>
                         </div>
                     </div>
-                    <div class="portlet-body">
-                        <div class="table-toolbar">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="btn-group">
-                                        <a href="{{ url('dashboard/movie/create') }}">
-                                            <button id="sample_editable_1_new" class="btn green">
-                                                Add New <i class="fa fa-plus"></i>
-                                            </button>
-                                        </a>
-                                    </div>
+                        <div class="box-body">
+                            <dl class="dl-horizontal" style="margin-left: -100px;">
+                                <dt>Genre:</dt>
+                                <dd>{{ $movie->genre }}</dd>
+                                <dt>Channel:</dt>
+                                <dd>{{ $movie->channel }}</dd>
+                                <dt>Country:</dt>
+                                <dd>{{ $movie->country }}</dd>
+                                <dt>Language:</dt>
+                                <dd>{{ $movie->language }}</dd>
+                                <dt>Tags:</dt>
+                                <dd>{{ $movie->tags }}</dd>
+                                <dt>Created:</dt>
+                                <dd>{{ $movie->created_at->diffForHumans() }}</dd>
+                                <dt>Modified:</dt>
+                                <dd>{{ $movie->updated_at->diffForHumans() }}</dd>
+                            </dl>
+                            <div class="box box-default collapsed-box">
+                                <div class="box-header with-border">
+                                    <h4>Description</h4>
+
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-box-tool" type="button" data-widget="collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
                                 </div>
                             </div>
+                                <div class="box-body">
+                                    {!! \Illuminate\Support\Facades\Crypt::decrypt($movie->description) !!}
+                                </div>
                         </div>
-                        @foreach($movies as $movie)
-                            <table class="table table-striped table-bordered table-hover" id="sample_1">
-                                <tr>
-                                    <th class="col-md-2">Id</th>
-                                    <td class="col-md-10">{{ $movie->id }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Title</th>
-                                    <td class="col-md-10">{{ $movie->title }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Tags</th>
-                                    <td class="col-md-10">{{ $movie->tags }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Genre</th>
-                                    <td class="col-md-10">{{ $movie->genre }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Channel</th>
-                                    <td class="col-md-10">{{ $movie->channel }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Country</th>
-                                    <td class="col-md-10">{{ $movie->country }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Language</th>
-                                    <td class="col-md-10">{{ $movie->language }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Created</th>
-                                    <td class="col-md-10">{{ $movie->created_at->diffForHumans() }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Modified</th>
-                                    <td class="col-md-10">{{ $movie->updated_at->diffForHumans() }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Thumbnail</th>
-                                    <td class="col-md-10">{!!  Html::image($movie->thumbnail, null, ['class' => 'img-thumbnail col-md-6']) !!}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-md-2">Description</th>
-                                    <td class="col-md-10">{!! \Illuminate\Support\Facades\Crypt::decrypt($movie->description) !!}</td>
-                                </tr>
-                            </table>
-                            <br/>
-                        @endforeach
                     </div>
                 </div>
-                <!-- END EXAMPLE TABLE PORTLET-->
             </div>
-        </div>
+            @endforeach
+            {!! $movies->render()!!}
     </div>
-    <!-- END PAGE CONTENT-->
+    </div>
+@endsection
 
+@section('page-javascript')
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+    </script>
 @stop
