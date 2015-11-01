@@ -9,6 +9,13 @@ use App\Movie;
 
 class MoviesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Show all movies
      *
