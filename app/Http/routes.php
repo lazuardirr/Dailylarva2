@@ -11,15 +11,23 @@
 |
 */
 
-Route::get('/', ['as' => 'home', function () {
+Route::get('/', ['as' => 'home', 'middleware' => 'auth', function () {
     return view('adminlte');
 }]);
 Route::resource('agents', 'AgentsController');
 Route::get('movies/json/{title}', 'MoviesController@getMovie');
 Route::resource('movies', 'MoviesController');
 Route::resource('server', 'ServerController');
+Route::get('dev', 'DevelopmentController@index')->name('dev.index');
+Route::get('dev/progress', 'DevelopmentController@progress')->name('dev.progress');
+Route::get('dev/task', 'DevelopmentController@getTask')->name('dev.task');
+Route::post('dev/task', 'DevelopmentController@postTask');
+Route::get('dev/task/{tasks}', 'DevelopmentController@showTask')->name('dev.task.show');
+Route::patch('dev/tas/{tasks}', 'DevelopmentController@taskProgress')->name('dev.task.progress');
+
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
