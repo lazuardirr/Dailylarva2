@@ -67,4 +67,24 @@ Breadcrumbs::register('server.edit', function ($breadcrumbs, $server) {
     $breadcrumbs->push('Edit', route('server.edit'));
 });
 
+//Breadcrumbs for dev
+Breadcrumbs::register('dev.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Development', route('dev.index'));
+});
+
+Breadcrumbs::register('dev.progress', function($breadcrumbs) {
+    $breadcrumbs->parent('dev.index');
+    $breadcrumbs->push('Progress', route('dev.progress'));
+});
+
+Breadcrumbs::register('dev.task', function($breadcrumbs) {
+    $breadcrumbs->parent('dev.index');
+    $breadcrumbs->push('Task', route('dev.task'));
+});
+
+Breadcrumbs::register('dev.task.show', function ($breadcrumbs, $task) {
+    $breadcrumbs->parent('dev.task');
+    $breadcrumbs->push($task->task, route('server.show', $task->id));
+});
 
