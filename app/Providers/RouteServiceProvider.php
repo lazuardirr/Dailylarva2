@@ -30,6 +30,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $router->model('agents', 'App\Agent');
         $router->model('movies', 'App\Movie');
+        $router->model('tasks', 'App\Task');
     }
 
     /**
