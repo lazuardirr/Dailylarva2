@@ -18,7 +18,7 @@
                             <div class="input-group col-md-12">
                                 <label for="subtask[{{ $subtask->id }}]" class="col-md-8">{{$subtask->sub_task}}</label>
                                     <span class="col-md-4">
-                                        <input {{ $subtask->progress == 1 ? 'checked' : '' }} name="subtask[{{ $subtask->id }}]"
+                                        <input {{ $subtask->progress == 1 ? 'checked disabled' : '' }} name="subtask[{{ $subtask->id }}]"
                                                type="checkbox">Done
                                     </span>
                             </div>
@@ -29,6 +29,7 @@
                     </div>
                     </form>
                 </div>
+                @include('errors.list')
             </div>
         </div>
     </div>

@@ -36,7 +36,7 @@
             <span class="input-group-addon">
                 @
             </span>
-                {!! Form::text('id', null, ['class' => 'form-control', isset($movie) ? 'disabled' : '', 'placeholder' => 'ID']) !!}
+                {!! Form::text('id', null, ['class' => 'form-control', 'placeholder' => 'ID']) !!}
             </div>
         </div>
         <div class="form-group">

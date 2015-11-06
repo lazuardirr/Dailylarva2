@@ -11,7 +11,11 @@ class MovieRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        if (isset($this->user()->id)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

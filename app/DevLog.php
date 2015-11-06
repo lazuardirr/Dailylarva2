@@ -18,6 +18,7 @@ class DevLog extends Model
         } else {
             $this->content = $content;
         }
+        return $this;
     }
 
     public function user()

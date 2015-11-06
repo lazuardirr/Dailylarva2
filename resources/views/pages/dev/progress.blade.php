@@ -48,7 +48,6 @@
                         <div class="form-body">
                             <div class="form-group">
                                 <label for="task" class="col-md-2 control-label">Progress</label>
-
                                 <div class="col-md-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-cog"></i></span>

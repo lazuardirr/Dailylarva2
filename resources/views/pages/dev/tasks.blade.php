@@ -58,6 +58,7 @@
                         </div>
                     </form>
                 </div>
+                @include('errors.list')
             </div>
         </div>
         <div class="col-md-6">

@@ -23,7 +23,11 @@ Route::get('dev/progress', 'DevelopmentController@progress')->name('dev.progress
 Route::get('dev/task', 'DevelopmentController@getTask')->name('dev.task');
 Route::post('dev/task', 'DevelopmentController@postTask');
 Route::get('dev/task/{tasks}', 'DevelopmentController@showTask')->name('dev.task.show');
-Route::patch('dev/tas/{tasks}', 'DevelopmentController@taskProgress')->name('dev.task.progress');
+Route::patch('dev/task/{tasks}', 'DevelopmentController@taskProgress')->name('dev.task.progress');
+Route::get('dev/issue', 'DevelopmentController@getIssue')->name('dev.issue');
+Route::post('dev/issue', 'DevelopmentController@postIssue');
+Route::get('dev/issue/{issue}', 'DevelopmentController@getFixIssue')->name('dev.issue.edit');
+Route::patch('dev/issue/{issue}', 'DevelopmentController@postFixIssue')->name('dev.issue.fix');
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');

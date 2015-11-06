@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DevIssue;
 use App\DevLog;
 use App\Http\Requests;
+use App\Http\Requests\IssueRequest;
+use App\Http\Requests\TaskRequest;
 use App\SubTask;
 use App\Task;
-use Illuminate\Http\Request;
 
 class DevelopmentController extends Controller
 {
@@ -24,10 +26,13 @@ class DevelopmentController extends Controller
     public function progress()
     {
         $tasks = Task::get();
+        $issuesData = DevIssue::get();
         $subTasksData = SubTask::get();
+        $issues['total'] = $issuesData->count();
+        $issues['regress'] = $issuesData->count() > 0 ? round($issuesData->count() / ($subTasksData->count() + $issuesData->count()) * 100, 2) : 0;
         $subTasks['total'] = $subTasksData->count();
-        $subTasks['progress'] = $subTasksData->count() > 0 ? round($subTasksData->where('progress', 1)->count()/$subTasksData->count()*100,2) : 0;
-        return view('pages.dev.index', compact('tasks', 'subTasks'));
+        $subTasks['progress'] = $subTasksData->count() > 0 ? round($subTasksData->where('progress', 1)->count() / ($subTasksData->count() + $issuesData->count()) * 100, 2) : 0;
+        return view('pages.dev.index', compact('tasks', 'subTasks', 'issues'));
     }
 
     public function getTask()
@@ -36,7 +41,7 @@ class DevelopmentController extends Controller
         return view('pages.dev.tasks', compact('tasks'));
     }
 
-    public function postTask(Request $request)
+    public function postTask(TaskRequest $request)
     {
         $subTasksData = $request->get('subTask');
         $taskData = $request->except('subTask');
@@ -60,7 +65,7 @@ class DevelopmentController extends Controller
         $dev->addLog('New Task Added', $request->user()->id, $logcontent);
         $dev->save();
 
-        return redirect('dev/task');
+        return redirect('dev/progress');
     }
 
     public function showTask(Task $task)
@@ -68,7 +73,7 @@ class DevelopmentController extends Controller
         return view('pages.dev.showTask', compact('task'));
     }
 
-    public function taskProgress(Task $task, Request $request)
+    public function taskProgress(Task $task, TaskRequest $request)
     {
         $logcontent = [];
         foreach($request->get('subtask') as $subtask_id => $progress)
@@ -82,8 +87,32 @@ class DevelopmentController extends Controller
         $log = new DevLog();
         $log->addLog('Task Completed', $request->user()->id, $logcontent);
         $log->save();
-        return redirect('dev/task');
+        return redirect('dev/progress');
     }
 
+    public function getIssue()
+    {
+        return view('pages.dev.getissue');
+    }
+
+    public function postIssue(IssueRequest $request)
+    {
+        $issue = new DevIssue($request->all());
+        if ($issue->save()) {
+            $devlog = new DevLog();
+            $devlog->addLog(
+                'New Issue Added',
+                $request->user()->id,
+                $issue->detail)
+                ->save();
+        }
+
+        return redirect('dev/progress');
+    }
+
+    public function getFixIssue(DevIssue $issue)
+    {
+        return view('pages.dev.getfixissue', compact('issue'));
+    }
 
 }

@@ -14,13 +14,14 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Progress</span>
-                    <span class="info-box-number">{{ $subTasks['total'] }}</span>
+                    <span class="info-box-number">{{ $subTasks['total'] + $issues['total'] }}</span>
 
                     <div class="progress">
-                        <div class="progress-bar" style="width: {{ $subTasks['progress'] }}%;"></div>
+                        <div class="progress-bar"
+                             style="width: {{ $subTasks['progress'] - $issues['regress'] }}%;"></div>
                     </div>
                     <span class="progress-description">
-                        {{ $subTasks['progress'] }}% completed
+                        {{ $subTasks['progress'] - $issues['regress'] }}% completed
                     </span>
                 </div>
             </div>
@@ -89,48 +90,20 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Issue</span>
-                    <span class="info-box-number">85412</span>
+                    <span class="info-box-number">{{ $issues['total'] }}</span>
 
                     <div class="progress">
-                        <div class="progress-bar" style="width: 60%;"></div>
+                        <div class="progress-bar" style="width: {{ $issues['regress'] }}%;"></div>
                     </div>
                     <span class="progress-description">
-                        60% issue fixed
+                        {{ $issues['total'] }} issue unresolved
                     </span>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Issues</h3>
-                </div>
-                <div class="box-body no-padding">
-                    <table class="table table-condensed">
-                        <thead>
-                        <tr>
-                            <th style="width: 10%;">#</th>
-                            <th>Issue</th>
-                            <th>Detail</th>
-                            <th style="width: 40px;">Level</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="warning">
-                            <td>1.</td>
-                            <td>Movies autofill not working</td>
-                            <td>JSON error, no cross-site error</td>
-                            <td>
-                                <span class="badge bg-yellow">medium</span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        @include('pages.partials.issuetable')
     </div>
 
 @endsection

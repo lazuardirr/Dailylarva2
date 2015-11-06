@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Agent;
+use App\DevLog;
 use App\Http\Requests;
 use App\Http\Requests\AgentRequest;
 
@@ -61,8 +62,13 @@ class AgentsController extends Controller
     public function store(AgentRequest $request)
     {
         $agent = new Agent($request->all());
-        $agent->save();
         flash('New Agent have been created.');
+        if($agent->save())
+        {
+            $devlog = new DevLog();
+            $devlog->addLog('New Agent Created', $request->user()->id, array($agent->email));
+            $devlog->save();
+        }
         return redirect('agents');
     }
 
@@ -86,7 +92,12 @@ class AgentsController extends Controller
      */
     public function update(Agent $agent, AgentRequest $request)
     {
-        $agent->update($request->all());
+        if($agent->update($request->all()))
+        {
+            $devlog = new DevLog();
+            $devlog->addLog('Agent Updated', $request->user()->id, array($agent->email));
+            $devlog->save();
+        }
         flash('Agent have been updated.');
         return redirect('agents/' . $agent->id);
     }

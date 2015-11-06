@@ -85,6 +85,15 @@ Breadcrumbs::register('dev.task', function($breadcrumbs) {
 
 Breadcrumbs::register('dev.task.show', function ($breadcrumbs, $task) {
     $breadcrumbs->parent('dev.task');
-    $breadcrumbs->push($task->task, route('server.show', $task->id));
+    $breadcrumbs->push($task->task, route('dev.task.show', $task->id));
 });
 
+Breadcrumbs::register('dev.issue', function ($breadcrumbs) {
+    $breadcrumbs->parent('dev.index');
+    $breadcrumbs->push('Issue', route('dev.issue'));
+});
+
+Breadcrumbs::register('dev.issue.edit', function ($breadcrumbs, $issue) {
+    $breadcrumbs->parent('dev.issue');
+    $breadcrumbs->push($issue->id, route('dev.issue'));
+});

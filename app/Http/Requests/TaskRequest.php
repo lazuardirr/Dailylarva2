@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class AgentRequest extends Request
+class TaskRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,15 @@ class AgentRequest extends Request
      */
     public function rules()
     {
-        return [
-            'email' => 'required|email',
-            'email_password' => 'required',
-            'dailymotion_password' => 'required'
-        ];
+        if ($this->route()->getName() === 'dev.task.progress') {
+            $rules = ['subtask' => 'required|min:1'];
+        } else {
+            $rules = [
+                'task' => 'required',
+                'status' => 'required',
+                'subTask[]' => 'required',
+            ];
+        }
+        return $rules;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DevLog;
 use App\Http\Requests;
 use App\Http\Requests\MovieRequest;
 use App\lib\ContentGenerator;
@@ -49,7 +50,11 @@ class MoviesController extends Controller
         $movie = new Movie($request->all());
         $movie->setThumbnail($content);
         $movie->setDescription($content);
-        $movie->save();
+        if ($movie->save()) {
+            $devlog = new DevLog();
+            $devlog->addLog('New Movie Created', $request->user()->id, array($movie->title));
+            $devlog->save();
+        }
         flash('New Movie have been created.');
         return redirect('movies');
     }
@@ -68,14 +73,16 @@ class MoviesController extends Controller
      */
     public function edit(Movie $movie)
     {
-        $page_title = $movie->title;
-        $page_description = 'Edit selected movie.';
         return view('pages.movies.edit', compact('movie', 'page_title', 'page_description'));
     }
 
     public function update(MovieRequest $request, Movie $movie)
     {
-        $movie->update($request->all());
+        if ($movie->update($request->all())) {
+            $devlog = new DevLog();
+            $devlog->addLog('Movie Updated', $request->user()->id, array($movie->title));
+            $devlog->save();
+        }
         flash('Movie have been updated.');
         return redirect('movies/' . $movie->id);
     }
