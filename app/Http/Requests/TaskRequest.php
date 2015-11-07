@@ -31,7 +31,7 @@ class TaskRequest extends Request
             $rules = [
                 'task' => 'required',
                 'status' => 'required',
-                'subTask[]' => 'required',
+                'subTask' => 'required',
             ];
         }
         return $rules;

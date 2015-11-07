@@ -42,6 +42,9 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-exclamation"></i></span>
                                         <input name="subTask[]" type="text" class="form-control" placeholder="Subtask">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default removeSubTask">x</button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -76,6 +79,9 @@
                     "<div class=\"input-group\">" +
                     "<span class=\"input-group-addon\"><i class=\"fa fa-exclamation\"></i></span>" +
                     "<input name=\"subTask[]\" type=\"text\" class=\"form-control\" placeholder=\"Subtask\">" +
+                    "<span class=\"input-group-btn\">" +
+                    "<button class=\"btn btn-default form-control removeSubTask\" type=\"button\">x</button>" +
+                    "</span>" +
                     "</div>" +
                     "</div>");
             return items;
@@ -91,12 +97,16 @@
             });
         })
     </script>
-
     <script>
         jQuery(document).ready(function ($) {
             $(".clickable-row").click(function () {
                 window.document.location = $(this).data("href");
-            })
+            });
         })
+    </script>
+    <script>
+        $(".removeSubTask").click(function () {
+            Console().log('asdf');//$(this).closest('.input-group').remove();
+        });
     </script>
 @stop
