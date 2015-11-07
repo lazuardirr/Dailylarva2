@@ -36,7 +36,7 @@
             <span class="input-group-addon">
                 @
             </span>
-                {!! Form::text('id', null, ['class' => 'form-control', 'placeholder' => 'ID']) !!}
+                {!! Form::text('id', null, ['class' => 'form-control', 'placeholder' => 'ID', 'id' => 'id', 'readonly']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -44,7 +44,7 @@
             <span class="input-group-addon">
                 <i class="fa fa-font"></i>
             </span>
-                {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
+                {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title', 'readonly', 'id' => 'title']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -68,7 +68,7 @@
             <span class="input-group-addon">
                 <i class="fa fa-music"></i>
             </span>
-                {!! Form::text('channel', null, ['class' => 'form-control', 'placeholder' => 'Channel']) !!}
+                {!! Form::text('channel', null, ['class' => 'form-control', 'placeholder' => 'Channel', 'readonly', 'id' => 'channel']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -84,7 +84,7 @@
             <span class="input-group-addon">
                 <i class="fa fa-language"></i>
             </span>
-                {!! Form::text('language', null, ['class' => 'form-control', 'placeholder' => 'Language']) !!}
+                {!! Form::text('language', null, ['class' => 'form-control', 'placeholder' => 'Language', 'readonly', 'id' => 'language']) !!}
             </div>
         </div>
         <div class="form-actions">

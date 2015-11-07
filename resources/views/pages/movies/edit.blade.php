@@ -8,7 +8,7 @@
     <div class="box box-primary">
         <div class="box-body">
             {!! Form::model($movie, ['method' => 'PATCH', 'action' => ['MoviesController@update', $movie->id], 'role' => 'form']) !!}
-            @include('pages.partials.form', ['pages' => 'movies', 'submitButtonText' => 'Add Movies'])
+            @include('pages.partials.form', ['pages' => 'movies', 'submitButtonText' => 'Update Movie'])
             {!! Form::close() !!}
 
             @include('errors.list')
