@@ -16,6 +16,7 @@ Route::get('/', ['as' => 'home', 'middleware' => 'auth', function () {
 }]);
 Route::resource('agents', 'AgentsController');
 Route::get('movies/json/{title}', 'MoviesController@getMovie');
+Route::post('movies/{movies}/filter', 'MoviesController@postFilter');
 Route::resource('movies', 'MoviesController');
 Route::resource('server', 'ServerController');
 Route::get('dev', 'DevelopmentController@index')->name('dev.index');

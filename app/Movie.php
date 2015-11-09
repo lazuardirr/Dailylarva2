@@ -27,4 +27,9 @@ class Movie extends Model
     {
         $this->thumbnail = $content->getThumbnail();
     }
+
+    public function filters()
+    {
+        return $this->belongsToMany('App\Filter')->withTimestamps();
+    }
 }

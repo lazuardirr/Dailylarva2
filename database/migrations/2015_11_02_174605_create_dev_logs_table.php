@@ -16,7 +16,7 @@ class CreateDevLogsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('title');
-            $table->string('content');
+            $table->longText('content');
             $table->timestamps();
 
             $table->foreign('user_id')

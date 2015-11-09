@@ -23,8 +23,8 @@
                     <div class="input-group">
                         {!! Form::text('movie_title', null, ['id' => 'movie_title', 'class' => 'form-control', 'placeholder' => 'Search for title...']) !!}
                         <span class="input-group-btn">
-                {!! Form::button('Go!', ['id' => 'search', 'class' => 'btn btn-default']) !!}
-            </span>
+                        {!! Form::button('Go!', ['id' => 'search', 'class' => 'btn btn-default']) !!}
+                        </span>
                     </div>
                 </div>
                 <div class="box-body hidden" id="result-panel">
@@ -73,7 +73,7 @@
         $('#search').click(function () {
             var q = $("#movie_title").val();
             clearContainer();
-            $.getJSON("http://dailylarva.localhost/movies/json/" + q, function (data) {
+            $.getJSON("{{ url() }}/movies/json/" + q, function (data) {
                 console.log(data);
                 var items = generateResult(data);
                 setContainer(items);

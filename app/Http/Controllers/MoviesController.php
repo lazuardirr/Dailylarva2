@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\MovieRequest;
 use App\lib\ContentGenerator;
 use App\Movie;
+use Illuminate\Http\Request;
 
 class MoviesController extends Controller
 {
@@ -98,5 +99,19 @@ class MoviesController extends Controller
         $data = json_decode(file_get_contents('http://cdn.asghia.com/index.php?query=' . $title));
 
         return response()->json($data);
+    }
+
+    public function postFilter(Request $request, Movie $movie)
+    {
+        foreach ($request->get('filters') as $filter) {
+            $movie->filters()->attach($filter + 1);
+        }
+        if ($movie->save()) {
+            $devlog = new DevLog();
+            $devlog->addLog('New Filter Attached', $request->user()->id, array($movie->title));
+            $devlog->save();
+        }
+        flash('New Filter Attached.');
+        return redirect('movies/' . $movie->id);
     }
 }
