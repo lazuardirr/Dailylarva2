@@ -110,6 +110,7 @@ class MoviesController extends Controller
             $devlog = new DevLog();
             $devlog->addLog('New Filter Attached', $request->user()->id, array($movie->title));
             $devlog->save();
+
         }
         flash('New Filter Attached.');
         return redirect('movies/' . $movie->id);
