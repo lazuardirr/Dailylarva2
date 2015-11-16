@@ -50,3 +50,5 @@ Route::get('bc2', function () {
 Route::get('ieee/iot/2015/pricing', function () {
     return view('pages.bc2');
 });
+
+Route::get('test/behat/run', 'testBehat@run');
