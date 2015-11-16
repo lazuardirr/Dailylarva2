@@ -1,26 +1,21 @@
-Enjoy {{ $movie_title }} Full Movie!
-<br>
-WATCH NOW : {{ $short_url }}
-
-<br><br>
-Instructions to Download Full Movie: <br>
+Enjoy {{ $movie_title }} Full Movie!<br>WATCH NOW : {{ $short_url }}<br><br>Instructions to Download Full Movie: <br>
 1. Click the link. <br>
 2. Create you free account & you will be redirected to your movie!! <br>
 <br>
 Enjoy Your Free Full HD Movies! <br>
-----------------------------------------­------------ <br>
+----------------------------------------------------- <br>
 <br>
 Movie Synopsis:<br>{{ $movie_overview }} <br>
 <br>
 Keywords: <br>{{ $movie_title }} Full Movie <br>{{ $movie_title }} Full Movie  english subtitles
 <br>{{ $movie_title }} trailer review <br>{{ $movie_title }} trailer <br>
 <br>{{ $movie_title }} [HD] (3D) regarder en francais English Subtitles
-<br>{{ $movie_title }} Película Completa Subtitulada en Español
+<br>{{ $movie_title }} Pelicula Completa Subtitulada en Espanol
 <br>{{ $movie_title }} Full Movie subtitled in Spanish <br>{{ $movie_title }} Full Movie subtitled in French
-<br>{{ $movie_title }} Film complet sous-titrée en français <br>{{ $movie_title }} Full Movie subtitled in German
+<br>{{ $movie_title }} Film complet sous-titree en francais <br>{{ $movie_title }} Full Movie subtitled in German
 <br>{{ $movie_title }} volledige film ondertiteld in het Nederlands
 <br>{{ $movie_title }} Full movie subtitled in Portuguese
-<br>{{ $movie_title }} Filme completo com legendas em Português <br>
+<br>{{ $movie_title }} Filme completo com legendas em Portugues <br>
 <br>{{ $movie_title }} in HD 1080p, Watch {{ $movie_title }} in HD, Watch {{ $movie_title }} Online, {{ $movie_title }} Full Movie, Watch {{ $movie_title }} Full Movie Free Online Streaming
 <br>
 <br>{{ $movie_title }} Full Movie, <br>
